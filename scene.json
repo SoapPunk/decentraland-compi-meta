@@ -1,20 +1,20 @@
 {
   "display": {
-    "title": "DCL Scene",
-    "description": "My new Decentraland project",
+    "title": "Compicactus Viewer",
+    "description": "Sample scene for the Compicactus Viewer Meta",
     "navmapThumbnail": "images/scene-thumbnail.png",
     "favicon": "favicon_asset"
   },
   "contact": {
-    "name": "author-name",
+    "name": "Eibriel",
     "email": ""
   },
   "owner": "",
   "scene": {
     "parcels": [
-      "0,0"
+      "-37,77"
     ],
-    "base": "0,0"
+    "base": "-37,77"
   },
   "requiredPermissions": [],
   "main": "bin/game.js",
@@ -24,9 +24,9 @@
       "name": "spawn1",
       "default": true,
       "position": {
-        "x": 0,
+        "x": 8,
         "y": 0,
-        "z": 0
+        "z": 10
       },
       "cameraTarget": {
         "x": 8,

@@ -9,7 +9,7 @@ import {
 export class Compicactus implements ISystem {
     META_ID = 300
 
-    compiEntity: Entity|null = null
+    compiEntities: Array<Entity> = []
 
     constructor(api: any, host_data: any) {
 
@@ -24,38 +24,42 @@ export class Compicactus implements ISystem {
     }
 
     refreshHost(host:{host_data:string}) {
-        if (this.compiEntity != null) {
-            engine.removeEntity(this.compiEntity)
-        }
+        this.compiEntities.forEach((entity) => {
+            engine.removeEntity(entity)
+        })
+        this.compiEntities = []
         if (host.host_data) {
             const host_data = JSON.parse(host.host_data)
 
             const network_compi = new Blockchain(NETWORK.MATIC, CHARACTER.COMPICACTUS)
 
-            if (host_data.compicactus.enable_editor) {
-                host_data.compicactus.token_id = -1
-            }
+            host_data.compicactus.forEach((compicactus: any) => {
+                if (compicactus.enable_editor) {
+                    compicactus.token_id = -1
+                }
 
-            this.compiEntity = new CompiNPC(host_data.compicactus.token_id, network_compi)
-            this.compiEntity.addComponent(new Transform())
-            engine.addEntity(this.compiEntity)
+                const compiEntity = new CompiNPC(compicactus.token_id, network_compi)
+                compiEntity.addComponent(new Transform())
+                engine.addEntity(compiEntity)
 
-            this.compiEntity.getComponent(Transform).position.set(
-                host_data.compicactus.position.x,
-                host_data.compicactus.position.y,
-                host_data.compicactus.position.z
-            )
-            this.compiEntity.getComponent(Transform).rotation.setEuler(
-                host_data.compicactus.rotation.x,
-                host_data.compicactus.rotation.y,
-                host_data.compicactus.rotation.z
-            )
-            this.compiEntity.getComponent(Transform).scale.set(
-                host_data.compicactus.scale.x,
-                host_data.compicactus.scale.y,
-                host_data.compicactus.scale.z
-            )
+                compiEntity.getComponent(Transform).position.set(
+                    compicactus.position.x,
+                    compicactus.position.y,
+                    compicactus.position.z
+                )
+                compiEntity.getComponent(Transform).rotation.setEuler(
+                    compicactus.rotation.x,
+                    compicactus.rotation.y,
+                    compicactus.rotation.z
+                )
+                compiEntity.getComponent(Transform).scale.set(
+                    compicactus.scale.x,
+                    compicactus.scale.y,
+                    compicactus.scale.z
+                )
 
+                this.compiEntities.push(compiEntity)
+            })
         }
     }
 }
