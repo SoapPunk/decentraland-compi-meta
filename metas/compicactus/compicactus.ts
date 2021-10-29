@@ -58,6 +58,10 @@ export class Compicactus implements ISystem {
                     compicactus.scale.z
                 )
 
+                if (compicactus.face_user) {
+                    compiEntity.addComponent(new Billboard())
+                }
+
                 this.compiEntities.push(compiEntity)
             })
         }

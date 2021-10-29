@@ -10,7 +10,8 @@ const sampleLandOwnerData = {
         "scale": {"x":1, "y":1, "z":1},
         "character": "compicactus",
         "enable_editor": false,
-        "token_id": 2
+        "token_id": 2,
+        "face_user": false
       },
       {
         "position": {"x":10, "y":1, "z":8},
@@ -18,7 +19,8 @@ const sampleLandOwnerData = {
         "scale": {"x":1, "y":1, "z":1},
         "character": "compicactus",
         "enable_editor": true,
-        "token_id": 2
+        "token_id": 2,
+        "face_user": true
       }
     ]
   }`

@@ -11,7 +11,7 @@
     "ecs:install-next": "npm install --save-dev decentraland-ecs@next"
   },
   "devDependencies": {
-    "decentraland-ecs": "latest"
+    "decentraland-ecs": "^6.6.9"
   },
   "dependencies": {
     "@compicactus/dcl-scene-utils": "^0.3.3",
